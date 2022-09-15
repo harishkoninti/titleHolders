@@ -3,13 +3,17 @@ import {useState, useRef} from 'react';
 import safetyConnectLogo from "./images/safetyConnectLogo.png";
 import useSound from 'use-sound';
 import error from './sounds/error.mp3';
+import errorGif from './images/errorGif.gif';
+import woman from './images/woman.png';
+import congratulations from './images/congratulations.png';
 // import { Card, Button } from 'react-bootstrap';
 
 let style = {
   backgroundColor:"#072F54",
   height:"100vh",
   display:"flex",
-  alignItems:"center"
+  alignItems:"center",
+  overflow:'hidden'
 }
 
 let card = {
@@ -58,7 +62,7 @@ function App() {
   const [play, { stop }] = useSound(error);
   const [currentTop, setCurrentTop] = useState(false);
   const [currentLeft, setCurrentLeft] = useState(false);
-  const topArray = ['-40%','37%','3%', '23%', '-17%', '3%', '22%', '-22%', '-39%', '10%'];
+  const topArray = ['-20%','37%','3%', '23%', '-17%', '3%', '22%', '-22%', '-25%', '10%'];
   const leftArray = ['-13%', '9%', '9%' ,'-11%', '-11%', '11%', '0%', '0%' ,'13%', '13%'];
 
   const productTeam = () =>{
@@ -119,8 +123,8 @@ function App() {
     }
   }
 
-  const spamContinue = async () => {
- await spamClose.current.click();
+ const spamContinue = () => {
+ spamClose.current.click();
   stop()
  setTimeout(()=>{
   let index =  Math.floor(Math.random()*topArray.length)
@@ -133,6 +137,25 @@ function App() {
  },500)  
   }
 
+  const multipleModals = () => {
+    return(
+      <>
+        <div className="modal fade" id="spamModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" style={spamObj}>
+          <div className="modal-content" style={{position:"relative", padding:"5% 0%"}}>
+            <button type="button" className="btn-close" ref={spamClose} style={{display:"hidden", visibility:"hidden"}} data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal-body">
+              <img src={errorGif} alt="errorGif" className="errorGif" />
+              <br />
+             <span style={{fontWeight:"600"}}> <span style={{color:"red"}}> Error 404</span> <br /> <span style={{fontWeight:"600"}}> Contact Tech Support </span></span> 
+            </div>
+          </div>
+        </div>
+      </div>
+      </>
+    )
+  }
+
   let spamObj = {
     top : currentTop,
     left : currentLeft
@@ -142,8 +165,9 @@ function App() {
       <button className="btn btn-light" ref={buttonRef} type="button" style={{display:"none"}} data-bs-toggle="modal" data-bs-target="#exampleModal">Button</button>
       <button className="btn btn-light" ref={spamButtonRef} type="button" style={{display:"none"}} data-bs-toggle="modal" data-bs-target="#spamModal">Button</button>
      <div className="logo" style={{  position:"fixed", top:"4%", left:"5%"}}><img src={safetyConnectLogo}  style={logo} alt="logo" height={100} width={100} /></div>
-      <div className="card" style={card}>
-      <div className="card-header" style={cardHeader}>TOWNHALL AWARD NOMINEE</div>
+     <div className="col-lg-6" style={{margin:"0px auto"}}>
+     <div className="card"  style={card}>
+      <div className="card-header" style={cardHeader}>TOWNHALL AWARD NOMINEES</div>
         <div className="card-body">
           <div className="body1">
           <div className="question q1" style={question}> Which of the following according to you is <span style={{fontWeight:"600"}}>The Dream Team </span>?</div>
@@ -159,27 +183,36 @@ function App() {
             </div>
           </div>
           <div className="body2 hidden">
-            Congratulations
+            <div className="d-flex flex-column justify-content-center align-items-center">
+            <img src={congratulations} height={250} width={300} alt="congratulations" />
+            <span style={{fontWeight:"600", fontSize:'26px'}}>Congratulations!</span> 
+            <div style={{fontSize:"20px"}}>You have chosen the Best Team</div>
+            </div>
           </div>
         </div>
       </div>
+     </div>
       <div className="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content" style={{position:"relative", padding:"5% 0%"}}>
+          <div className="modal-content" style={{position:"relative"}}>
             {/* <button type="button" className="btn-close" onClick={()=>nameChange()} data-bs-dismiss="modal" aria-label="Close"></button> */}
             <div className="modal-body">
-             <span style={{fontWeight:"600"}}>{data}</span>
-             <br />
-             <button className="btn btn-primary mt-4" type="button" onClick={()=>nameChange()}  data-bs-dismiss="modal" aria-label="Close">Try Again</button>
+              <div className="d-flex justify-content-center align-items-center">
+                <img src={woman} height={150} width={150} alt="Think" />
+                <div style={{fontWeight:"600",opacity:"0.8"}}>{data}</div>
+              </div>
+             <button className="btn btn-primary" type="button" onClick={()=>nameChange()}  data-bs-dismiss="modal" aria-label="Close">Try Again</button>
             </div>
           </div>
         </div>
       </div>
       <div className="modal fade" id="spamModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" style={spamObj}>
-          <div className="modal-content" style={{position:"relative", padding:"5% 0%"}}>
-            <button type="button" className="btn-close" ref={spamClose} style={{display:"hidden"}} data-bs-dismiss="modal" aria-label="Close"></button>
+          <div className="modal-content" style={{position:"relative"}}>
+            <button type="button" className="btn-close" ref={spamClose} style={{display:"hidden", visibility:"hidden"}} data-bs-dismiss="modal" aria-label="Close"></button>
             <div className="modal-body">
+              <img src={errorGif} alt="errorGif" className="errorGif" />
+              <br />
              <span style={{fontWeight:"600"}}> <span style={{color:"red"}}> Error 404</span> <br /> <span style={{fontWeight:"600"}}> Contact Tech Support </span></span> 
             </div>
           </div>
