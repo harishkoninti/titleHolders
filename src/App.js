@@ -167,7 +167,7 @@ function App() {
       <button className="btn btn-light" ref={buttonRef} type="button" style={{display:"none"}} data-bs-toggle="modal" data-bs-target="#exampleModal">Button</button>
       <button className="btn btn-light" ref={spamButtonRef} type="button" style={{display:"none"}} data-bs-toggle="modal" data-bs-target="#spamModal">Button</button>
      <div className="logo" style={{  position:"fixed", top:"4%", left:"5%"}}><img src={safetyConnectLogo}  style={logo} alt="logo" height={100} width={100} /></div>
-     <div className="col-lg-6" style={{margin:"0px auto"}}>
+     <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12" style={{margin:"0px auto"}}>
      <div className="card"  style={card}>
       <div className="card-header" style={cardHeader}>TOWNHALL AWARD NOMINEES</div>
         <div className="card-body">
@@ -185,10 +185,12 @@ function App() {
             </div>
           </div>
           <div className="body2 hidden">
+            <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div className="d-flex flex-column justify-content-center align-items-center">
-            <img src={congratulations} height={250} width={300} alt="congratulations" />
+            <img src={congratulations} height={250} width="100%" alt="congratulations" />
             <span style={{fontWeight:"600", fontSize:'26px'}}>Congratulations!</span> 
             <div style={{fontSize:"20px"}}>You have chosen the Best Team</div>
+            </div>
             </div>
           </div>
         </div>

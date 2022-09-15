@@ -36,3 +36,37 @@ margin:auto;
 .modal{
   overflow:hidden;
 }
+
+@media (max-width: 400px) {
+.question{
+  font-size:20px !important;
+}
+.card-header{
+  font-size:18px !important;
+  padding: 3% 0% !important;
+}
+.logo{
+top:1% !important;
+}
+.logo img{  
+  height: 20px !important;
+  width: 140px !important;
+}
+}
+
+@media (max-width: 365px) {
+  .question{
+    font-size:16px !important;
+  }
+  .card-header{
+    font-size:14px !important;
+    padding: 3% 0% !important;
+  }
+  .logo{
+  top:1% !important;
+  }
+  .logo img{  
+    height: 16px !important;
+    width: 120px !important;
+  }
+  }
