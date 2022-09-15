@@ -20,7 +20,8 @@ let card = {
   backgroundColor:"#356592",
   color:"#fff",
   paddingBottom:"5%",
-  width:"100%"
+  width:"100%",
+  padding: "0px 10px"
 }
 
 let cardHeader = {
@@ -29,7 +30,8 @@ let cardHeader = {
   justifyContent:"center",
   alignItems:"center",
   padding:"5% 0%",
-  fontFamily: 'Poppins'
+  fontFamily: 'Poppins',
+  backgroundColor: 'transparent'
 }
 
 let buttonClass = {
